@@ -1,20 +1,19 @@
 package com.kurylek.trees;
 
+import com.kurylek.trees.parts.Fruit;
+import com.kurylek.trees.parts.SoftLeaf;
+
 public class DeciduousTree extends Tree {
 
-    private boolean hasEdibleFruits;
+    private final Fruit fruit;
 
-    public DeciduousTree(String trunk, String branches, String leaves, boolean hasEdibleFruits) {
-        super(trunk, branches, leaves);
-        this.hasEdibleFruits = hasEdibleFruits;
+    public DeciduousTree(String name, int trunkDiameter, int branchesCount, Fruit fruit, String leafShape) {
+        super(name, trunkDiameter, branchesCount, new SoftLeaf(leafShape));
+        this.fruit = fruit;
     }
 
     @Override
-    public void grow() {
-        System.out.println("Deciduous tree is growing!");
-    }
-
-    public boolean hasEdibleFruits() {
-        return hasEdibleFruits;
+    public String toString() {
+        return String.format("%s, and its fruit is called %s", super.toString(), fruit.toString());
     }
 }
